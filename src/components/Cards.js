@@ -10,7 +10,7 @@ export default function Cards({beer, id, getLiked}) {
         <div>
             <div className="cards">
                 <span className='likes'>
-                  <button type="button" className='like'><img src='heart.png' className='likebtn' alt='heart'/></button>
+                  <button type="button" onClick={ () => getLiked(beer)} className='like'><img src='heart.png' className='likebtn' alt='heart'/></button>
                 </span>
                   
                

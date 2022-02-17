@@ -10,23 +10,20 @@ export default function Home() {
     const [ liked, setLiked ]  = useState([])
     
     useEffect (() => {
-        getBeers()
-     },[search])
-
-    
-    const getBeers = async (beer) => {
+        const getBeers = async (beer) => {
         
-        let url = (search === "" || search === null)
-                  ?  base_url
-                  : `${base_url}?beer_name=${search}`
-      await  fetch(url)
-         .then((response) => response.json() )
-         .then((response) => {
-             setData(response)
-             console.log(response)
-         })
-
-    }
+            let url = (search === "" || search === null)
+                      ?  base_url
+                      : `${base_url}?beer_name=${search}`
+          await  fetch(url)
+             .then((response) => response.json() )
+             .then((response) => {
+                 setData(response)
+             })
+    
+        }
+        getBeers()
+     },[search])    
     
     const getSearch = (e) =>{
         e.preventDefault()
@@ -36,6 +33,7 @@ export default function Home() {
     const getLiked = (beer) => {
       const newbeer = beer
       setLiked([...liked, newbeer])
+      console.log(liked,"this is liked cards")
 
     }
 
@@ -54,12 +52,27 @@ export default function Home() {
         }
 
     </div>
+   
+   <div style={{margin:"3rem"}} > 
+   { liked ? <h1>YOUR FAVOURITE BEERS </h1> : <h1> Please Add you favourite Beers </h1>   }
+   </div>
 
-   {
-       liked ? ( <h1>Beers you love</h1> )
+    <div className='displayCards'>  
+    
+    {
+       liked ? 
+         liked.map((beer, index) => {
+             return (
+                 <Cards beer={beer} key={beer.id} />
+             )
+         } )
          : <h2> Add here your favourite Beers</h2>
 
-   }
+    }
+
+    </div>
+
+   
    
      
 

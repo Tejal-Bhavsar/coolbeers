@@ -15,16 +15,18 @@
   margin-bottom: 2rem;
  }
  
-  li{
+  li a{
    list-style: none;
    color: #fff;
  }
   
  ul {
+   list-style: none;
+   color: #fff;
   display: flex;
   justify-content: space-between;
  }
- 
+
  .nav {
   position: absolute;
   width: 152px;
@@ -35,9 +37,9 @@
  .searchbar{
   width: 34rem;
   height: 2.4rem;
-  border: 1px solid black;
   border-radius: 4px;
   padding: 0 10px;
+  outline: none;
  }
 
  .title{
